@@ -17,14 +17,19 @@
     "type": "git",
     "url": "https://github.com/eugeniosegala/snap-this"
   },
-  "bin": {
-    "snap-this": "./bin/snap-this"
-  },
+  "bin": "app.js",
   "scripts": {
-    "snap-this": "node index.js"
+    "snap-this": "node app.js",
+    "build": "rm -rf build && pkg . --out-path build",
+    "postbuild": "cp -R ./node_modules/puppeteer/.local-chromium build/chromium"
+  },
+  "pkg": {
+    "utils": "utils/*.js",
+    "scripts": "node_modules/puppeteer/lib/*.js"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
+    "download-chromium": "^2.2.1",
     "pending-xhr-puppeteer": "^2.1.0",
     "puppeteer": "^1.20.0"
   }
