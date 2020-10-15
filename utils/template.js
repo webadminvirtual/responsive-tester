@@ -1,5 +1,5 @@
-const devices = require('../DeviceDescriptors.js');
-const { cleanNames } = require('./helpers');
+const devices = require('./devices')
+const { cleanNames } = require('./helpers')
 
 const htmlElement = devices.map(device => {
   return `
@@ -7,13 +7,17 @@ const htmlElement = devices.map(device => {
         <div class="col-md-12">
           <h1 style="background-color: #1CACF4">
             Device: <span style="color: #fff">${device.name}</span>
-            Resolution: <span style="color: #fff">${device.viewport.width} x ${device.viewport.height}</span>
+            Resolution: <span style="color: #fff">${device.viewport.width} x ${
+    device.viewport.height
+  }</span>
           </h1>
-          <img style="border: 2px solid black; max-width: 500px;" src="./${cleanNames(device.name)}.png"  alt="${cleanNames(device.name)}" />
+          <img style="border: 2px solid black; max-width: 500px;" src="./${cleanNames(
+            device.name
+          )}.png"  alt="${cleanNames(device.name)}" />
         </div>
       </div>
-      `;
-});
+      `
+})
 
 const htmlContent = `
       <!doctype html>
@@ -28,8 +32,8 @@ const htmlContent = `
         <body>
           ${htmlElement.join('')}
         </body>
-      </html>`;
+      </html>`
 
 module.exports = {
-  htmlContent,
-};
+  htmlContent
+}
